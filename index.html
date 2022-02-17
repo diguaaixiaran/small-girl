@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面弹出文字效果</title>
+    <!-- 引入css -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- 引入js -->
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(function() {
+            var arr = [];
+            for (var i = 0; i < 3; i++) {
+                arr[arr.length] = prompt("请输入3位美女名字");
+                console.log(arr);
+                if (arr[arr.length - 1] == '') {
+                    alert("你怎么能什么都不输，刷新页面重新开始吧");
+                    break;
+                }
+            }
+            // 设置随机出现的文字数组
+            $("html").click(function(e) {
+                //创建span标签
+                var span = $("<span></span>");
+                $("body").append(span);
+                var x = e.clientX;
+                var y = e.clientY;
+                //console.log(x, y);
+                $("span").offset({
+                    left: x,
+                    top: y
+                }).html(arr[Math.floor(Math.random() * arr.length)] + "非常爱你");
+                $("span").stop().animate({
+                    top: y - 250,
+                    opacity: 0
+                }, 800, function() {
+                    //结束以后删除标签
+                    $("span").remove();
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
