@@ -17,7 +17,7 @@
         $(function() {
             var arr = [];
             for (var i = 0; i < 3; i++) {
-                arr[arr.length] = prompt("请输入3位美女名字");
+                arr[arr.length] = prompt("请输入你喜欢的3位美女名字");
                 if (arr[arr.length - 1] == '' || arr[arr.length - 1] == null) {
                     alert("你怎么能什么都不输，刷新页面重新开始吧");
                     break;
@@ -25,23 +25,31 @@
             }
             // 设置随机出现的文字数组
             $("html").click(function(e) {
+                var girls = arr[Math.floor(Math.random() * arr.length)];
                 //创建span标签
                 var span = $("<span></span>");
                 $("body").append(span);
                 var x = e.clientX;
                 var y = e.clientY;
                 //console.log(x, y);
-                $("span").offset({
-                    left: x,
-                    top: y
-                }).html(arr[Math.floor(Math.random() * arr.length)] + "非常爱你");
-                $("span").stop().animate({
-                    top: y - 250,
-                    opacity: 0
-                }, 1000, function() {
-                    //结束以后删除标签
-                    $("span").remove();
-                })
+                function appear(t) {
+                    $("span").offset({
+                        left: x,
+                        top: y
+                    }).html(t);
+                    $("span").stop().animate({
+                        top: y - 250,
+                        opacity: 0
+                    }, 1000, function() {
+                        //结束以后删除标签
+                        $("span").remove();
+                    })
+                }
+                if (arr.indexOf("李圆圆") != -1) {
+                    appear("竟敢喜欢李圆圆，赵大师砍死你");
+                } else {
+                    appear(girls + "非常爱你");
+                }
             })
         })
     </script>
