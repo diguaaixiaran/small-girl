@@ -18,8 +18,7 @@
             var arr = [];
             for (var i = 0; i < 3; i++) {
                 arr[arr.length] = prompt("请输入3位美女名字");
-                console.log(arr);
-                if (arr[arr.length - 1] == '') {
+                if (arr[arr.length - 1] == '' || arr[arr.length - 1] == null) {
                     alert("你怎么能什么都不输，刷新页面重新开始吧");
                     break;
                 }
