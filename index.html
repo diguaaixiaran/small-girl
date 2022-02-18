@@ -32,7 +32,7 @@
                 var x = e.clientX;
                 var y = e.clientY;
                 //console.log(x, y);
-                function appear(t) {
+                function anim(t) {
                     $("span").offset({
                         left: x,
                         top: y
@@ -46,9 +46,9 @@
                     })
                 }
                 if (arr.indexOf("李圆圆") != -1) {
-                    appear("竟敢喜欢李圆圆，赵大师砍死你");
+                    anim("竟敢喜欢李圆圆，赵大师砍死你");
                 } else {
-                    appear(girls + "非常爱你");
+                    anim(girls + "非常爱你");
                 }
             })
         })
